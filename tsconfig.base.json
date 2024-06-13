@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "module": "commonjs",
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "types": ["node", "jest"],
+    "target": "ES2021",
+    "allowJs": false,
+    "esModuleInterop": false,
+    "declarationMap": true,
+    "skipLibCheck": true,
+    "outDir": "dist/",
+    "declaration": true,
+    "noImplicitAny": false,
+    "downlevelIteration": true,
+    "removeComments": true,
+    "experimentalDecorators": true,
+    "typeRoots": ["./node_modules/@types"],
+    "moduleResolution": "node",
+    "strictPropertyInitialization": false,
+    "resolveJsonModule": true
+  },
+  "include": ["src", "tests"],
+  "exclude": ["node_modules", "dist"]
+}

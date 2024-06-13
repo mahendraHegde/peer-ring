@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.routeguide";
+option java_outer_classname = "RouteGuideProto";
+option objc_class_prefix = "RTG";
+import "google/protobuf/any.proto";
+
+
+package hashring;
+
+service HashRing {
+  rpc executeCommand(stream StreamCommand) returns (stream StreamCommand) {}
+}
+
+message StreamCommand {
+  string namespace = 1;
+  string command = 2;
+  string key = 3;
+  optional string payload = 4;
+  string ip=5;
+  string id=6;
+}

@@ -1,0 +1,11 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": ".spec.ts$",
+  "testPathIgnorePatterns": ["packages/__e2e__"],
+  "transform": {
+    "^.+\\.(t|j|mj)s$": "ts-jest"
+  },
+  "transformIgnorePatterns": ["<rootDir>/node_modules/(?!${nanoid})"]
+}

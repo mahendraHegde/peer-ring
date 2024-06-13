@@ -1,0 +1,32 @@
+{
+  "name": "@peer-ring/discovery-k8s",
+  "version": "1.0.0",
+  "description": "k8s peer discovery for peer-ring",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mahendraHegde/peer-ring.git"
+  },
+  "scripts": {
+    "prepublishOnly": "pnpm build",
+    "build": "tsc -p ./tsconfig.build.json",
+    "typecheck": "tsc -b"
+  },
+  "keywords": [
+    "k8s peer discovery",
+    "consistent hashing"
+  ],
+  "author": "Mahendra Hegde",
+  "license": "MIT",
+  "dependencies": {
+    "@peer-ring/discovery": "workspace:*",
+    "@kubernetes/client-node": "^0.21.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

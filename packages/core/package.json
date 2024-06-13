@@ -1,0 +1,42 @@
+{
+  "name": "@peer-ring/core",
+  "version": "1.0.0",
+  "description": "distributed,decentralized framework to build highly scalable storage systems",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mahendraHegde/peer-ring.git"
+  },
+  "scripts": {
+    "prepublishOnly": "pnpm build",
+    "test": "jest --config ../../jest.config.json --runInBand --forceExit",
+    "build": "DIST_DIR='./dist/rpc/proto/' PROTO_DIR='./src/rpc/proto/*' && tsc -p ./tsconfig.build.json && rm -rf ${DIST_DIR} && mkdir ${DIST_DIR}  && cp -R ${PROTO_DIR} ${DIST_DIR}",
+    "typecheck": "tsc -b",
+    "typedoc": "typedoc --commentStyle block --excludePrivate --plugin typedoc-plugin-markdown --out docs ./src/index.ts",
+    "generate:proto": "export PROTO_DIR='./src/rpc/proto' && grpc_tools_node_protoc --js_out=import_style=commonjs,binary:${PROTO_DIR} --grpc_out=grpc_js:${PROTO_DIR} --plugin=protoc-gen-grpc=./node_modules/.bin/grpc_tools_node_protoc_plugin -I ${PROTO_DIR} ${PROTO_DIR}/*.proto && pnpm generate:proto:ts",
+    "generate:proto:ts": "export PROTO_DIR='./src/rpc/proto' && grpc_tools_node_protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --ts_out=grpc_js:${PROTO_DIR} -I ${PROTO_DIR} ${PROTO_DIR}/*.proto"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.10.8",
+    "@peer-ring/discovery": "workspace:*",
+    "farmhash": "^3.3.1",
+    "google-protobuf": "^3.21.2",
+    "nanoid": "3.3.4"
+  },
+  "keywords": [],
+  "author": "Mahendra Hegde",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@grpc/proto-loader": "^0.7.13",
+    "grpc-tools": "^1.12.4",
+    "grpc_tools_node_protoc_ts": "^5.3.3",
+    "ts-proto": "^1.176.1"
+  }
+}

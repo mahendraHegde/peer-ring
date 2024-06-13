@@ -1,0 +1,26 @@
+{
+  "name": "@peer-ring/discovery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mahendraHegde/peer-ring.git"
+  },
+  "scripts": {
+    "prepublishOnly": "pnpm build",
+    "build": "tsc -p ./tsconfig.build.json",
+    "typecheck": "tsc -b",
+    "typedoc": "typedoc --commentStyle block --excludePrivate --plugin typedoc-plugin-markdown --out docs ./src/index.ts"
+  },
+  "keywords": [],
+  "author": "Mahendra Hegde",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}

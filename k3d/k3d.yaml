@@ -1,0 +1,30 @@
+# k3d configuration file, saved as e.g. /home/me/myk3dcluster.yaml
+apiVersion: k3d.io/v1alpha5 # this will change in the future as we make everything more stable
+kind: Simple # internally, we also have a Cluster config, which is not yet available externally
+metadata:
+  name: peer-ring # name that you want to give to your cluster (will still be prefixed with `k3d-`)
+servers: 1 # same as `--servers 1`
+agents: 2 # same as `--agents 2`
+# kubeAPI: # same as `--api-port myhost.my.domain:6445` (where the name would resolve to 127.0.0.1)
+#   host: "myhost.my.domain" # important for the `server` setting in the kubeconfig
+#   hostIP: "127.0.0.1" # where the Kubernetes API will be listening on
+#   hostPort: "6445" # where the Kubernetes API listening port will be mapped to on your host system
+image: rancher/k3s:latest # same as `--image rancher/k3s:v1.20.4-k3s1`
+ports:
+  - port: 8080:8080 # same as `--port '8080:80@loadbalancer'`
+    nodeFilters:
+      - loadbalancer
+  - port: 4444:4444
+    nodeFilters:
+      - loadbalancer
+env:
+  - envVar: bar=baz # same as `--env 'bar=baz@server:0'`
+    nodeFilters:
+      - server:0
+registries: # define how registries should be created or used
+  create: # creates a default registry to be used with the cluster; same as `--registry-create registry.localhost`
+    name: registry.localhost
+    host: "0.0.0.0"
+    hostPort: "5000"
+    volumes:
+      - ${PWD}/registry-k3d:/var/lib/registry # persist registry data locally

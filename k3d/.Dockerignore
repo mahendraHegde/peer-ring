@@ -1,0 +1,32 @@
+# Ignore k3d directory
+k3d/
+**/k3d/
+
+# Ignore distribution directories
+dist/
+**/dist/
+out/
+**/out/
+build/
+**/build/
+node_modules/
+**/node_modules/
+registry-k3d/
+**/registry-k3d/
+
+# Ignore logs
+*.log
+logs/
+**/logs/
+
+# Ignore environment files
+*.env
+**/*.env
+
+# Miscellaneous
+.DS_Store
+**/.DS_Store
+.npmrc
+**/.npmrc
+coverage/
+**/coverage/

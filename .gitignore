@@ -1,0 +1,18 @@
+# Distribution
+dist
+out
+build
+node_modules
+registry-k3d
+
+# Logs
+*.log*
+logs
+
+# Environment
+*.env*
+
+# Misc
+.DS_Store
+.npmrc
+coverage/

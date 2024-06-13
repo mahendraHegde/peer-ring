@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kv-app
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: kv-app
+  template:
+    metadata:
+      labels:
+        app: kv-app
+    spec:
+      containers:
+        - name: kv-app
+          image: registry.localhost:5000/kv-app:latest
+          ports:
+            - containerPort: 4444
+          env:
+            - name: DEPL_NAME
+              value: "kv-app"
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kv-service
+spec:
+  selector:
+    app: kv-app
+  ports:
+    - protocol: TCP
+      port: 4444
+      targetPort: 4444
+  type: LoadBalancer
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: pod-reader
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "watch", "list"]
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: pod-reader
+subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: default
+roleRef:
+  kind: ClusterRole
+  name: pod-reader
+  apiGroup: rbac.authorization.k8s.io

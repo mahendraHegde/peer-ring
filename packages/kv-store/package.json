@@ -1,0 +1,50 @@
+{
+  "name": "@peer-ring/kv-store",
+  "version": "1.0.0",
+  "description": "distributed,decentralized,embeddable in memory key value store with key level tunable consistency built on top of peer ring",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mahendraHegde/peer-ring.git"
+  },
+  "scripts": {
+    "prepublishOnly": "pnpm build",
+    "test": "jest --config ../../jest.config.json --runInBand --forceExit",
+    "build": "tsc -p ./tsconfig.build.json",
+    "typecheck": "tsc -b"
+  },
+  "dependencies": {
+    "@peer-ring/core": "workspace:*",
+    "@peer-ring/discovery-k8s": "workspace:*",
+    "@peer-ring/discovery": "workspace:*"
+  },
+  "keywords": [
+    "kv store",
+    "cache",
+    "in memory cache",
+    "distributed invalidation",
+    "consistent-hashing",
+    "p2p",
+    "distributed",
+    "decentralized",
+    "sharding",
+    "peer to peer",
+    "distributed-systems",
+    "high availability",
+    "consistent hashing",
+    "distributed applications",
+    "peer discovery",
+    "load balancing",
+    "replication",
+    "dynamic allocation"
+  ],
+  "author": "Mahendra Hegde",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}

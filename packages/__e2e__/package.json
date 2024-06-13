@@ -1,0 +1,35 @@
+{
+  "name": "@peer-ring/__e2e__",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mahendraHegde/peer-ring.git"
+  },
+  "scripts": {
+    "prepublishOnly": "pnpm build",
+    "build": "tsc -p ./tsconfig.build.json",
+    "cleanup:k3d": "k3d cluster list | grep -q 'peer-ring' && k3d cluster delete 'peer-ring'",
+    "typecheck": "tsc -b",
+    "test:e2e": "jest --passWithNoTests --config ./jest.config.json"
+  },
+  "keywords": [],
+  "author": "Mahendra Hegde",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@peer-ring/kv-store": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/supertest": "^6.0.2",
+    "fastify": "^4.27.0",
+    "supertest": "^7.0.0"
+  }
+}
