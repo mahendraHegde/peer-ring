@@ -58,3 +58,5 @@ await peerRing.execute({
 });
 ```
 
+generated types for peerRingOpts can be found [here](https://github.com/mahendraHegde/peer-ring/blob/main/packages/core/docs/interfaces/PeerRingOpts.md)
+
