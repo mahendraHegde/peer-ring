@@ -14,10 +14,13 @@ read more about the project [here](https://github.com/mahendraHegde/peer-ring)
 > Unless you are developing a distributed application on top of peer-ring, you most likely wont use this package directly, you might be interested in [Distributed KV store](https://www.npmjs.com/package/@peer-ring/kv-store).
 
 1. install
+
 ```
 npm i @peer-ring/core @peer-ring/discovery-k8s
 ```
+
 2. use
+
 ```typescript
 import { K8sPeerDiscovery } from "@peer-ring/discovery-k8s";
 import {
@@ -59,4 +62,3 @@ await peerRing.execute({
 ```
 
 generated types for peerRingOpts can be found [here](https://github.com/mahendraHegde/peer-ring/blob/main/packages/core/docs/interfaces/PeerRingOpts.md)
-

@@ -28,8 +28,8 @@
 
 ##### Parameters
 
-| Name   | Type                      |
-| :----- | :------------------------ |
+| Name | Type |
+| :------ | :------ |
 | `peer` | [`Peer`](classes/Peer.md) |
 
 ##### Returns
@@ -38,4 +38,4 @@
 
 #### Defined in
 
-types.ts:5
+[types.ts:5](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/discovery/src/types.ts#L5)

@@ -4,9 +4,9 @@
 
 ## Type parameters
 
-| Name | Type                                                                      |
-| :--- | :------------------------------------------------------------------------ |
-| `T`  | extends `Record`\<`string`, `unknown`\> = `Record`\<`string`, `unknown`\> |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `Record`\<`string`, `unknown`\> = `Record`\<`string`, `unknown`\> |
 
 ## Hierarchy
 
@@ -37,9 +37,9 @@
 
 #### Defined in
 
-core/src/types.ts:107
+[core/src/types.ts:107](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L107)
 
----
+___
 
 ### context
 
@@ -47,17 +47,17 @@ core/src/types.ts:107
 
 #### Type declaration
 
-| Name                    | Type                                                                   |
-| :---------------------- | :--------------------------------------------------------------------- |
-| `peerResponses`         | \{ `errors`: `Error`[] ; `results`: [`Command`](Command.md)\<`T`\>[] } |
-| `peerResponses.errors`  | `Error`[]                                                              |
-| `peerResponses.results` | [`Command`](Command.md)\<`T`\>[]                                       |
+| Name | Type |
+| :------ | :------ |
+| `peerResponses` | \{ `errors`: `Error`[] ; `results`: [`Command`](Command.md)\<`T`\>[]  } |
+| `peerResponses.errors` | `Error`[] |
+| `peerResponses.results` | [`Command`](Command.md)\<`T`\>[] |
 
 #### Defined in
 
-core/src/types.ts:121
+[core/src/types.ts:121](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L121)
 
----
+___
 
 ### key
 
@@ -65,9 +65,9 @@ core/src/types.ts:121
 
 #### Defined in
 
-core/src/types.ts:118
+[core/src/types.ts:118](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L118)
 
----
+___
 
 ### namespace
 
@@ -79,9 +79,9 @@ core/src/types.ts:118
 
 #### Defined in
 
-core/src/types.ts:106
+[core/src/types.ts:106](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L106)
 
----
+___
 
 ### opts
 
@@ -89,9 +89,9 @@ core/src/types.ts:106
 
 #### Defined in
 
-core/src/types.ts:120
+[core/src/types.ts:120](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L120)
 
----
+___
 
 ### payload
 
@@ -99,4 +99,4 @@ core/src/types.ts:120
 
 #### Defined in
 
-core/src/types.ts:119
+[core/src/types.ts:119](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L119)

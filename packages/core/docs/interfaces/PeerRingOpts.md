@@ -23,21 +23,21 @@ pino instance or ioptions
 
 #### Defined in
 
-core/src/types.ts:95
+[core/src/types.ts:95](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L95)
 
----
+___
 
 ### netManager
 
-• `Optional` **netManager**: [`InetManager`](InetManager.md) \| `Omit`\<[`NetManagerOpts`](NetManagerOpts.md), `"logger"`\>
+• `Optional` **netManager**: [`InetManager`](InetManager.md) \| `Omit`\<[`NetManagerOpts`](NetManagerOpts.md), ``"logger"``\>
 
 [InetManager](InetManager.md) instance or [NetManagerOpts](NetManagerOpts.md)
 
 #### Defined in
 
-core/src/types.ts:74
+[core/src/types.ts:74](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L74)
 
----
+___
 
 ### peerDiscovery
 
@@ -47,9 +47,9 @@ core/src/types.ts:74
 
 #### Defined in
 
-core/src/types.ts:70
+[core/src/types.ts:70](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L70)
 
----
+___
 
 ### replicationFactor
 
@@ -61,33 +61,33 @@ choose higher number if you prefer availability over consistency
 **`Default Value`**
 
 ```ts
-1;
+1
 ```
 
 #### Defined in
 
-core/src/types.ts:85
+[core/src/types.ts:85](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L85)
 
----
+___
 
 ### tokens
 
 • `Optional` **tokens**: `number`
 
 specifies how many partitions of the ring to create.
-it should be (way)more than Nodes\*virtualNodes, so that every node/vNode get its own token
+it should be (way)more than Nodes*virtualNodes, so that every node/vNode get its own token
 
 **`Default Value`**
 
 ```ts
-1000;
+1000
 ```
 
 #### Defined in
 
-core/src/types.ts:91
+[core/src/types.ts:91](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L91)
 
----
+___
 
 ### virtualNodes
 
@@ -98,9 +98,9 @@ specifies how many virtual node for each physical node to be added to the ring, 
 **`Default Value`**
 
 ```ts
-3;
+3
 ```
 
 #### Defined in
 
-core/src/types.ts:79
+[core/src/types.ts:79](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L79)

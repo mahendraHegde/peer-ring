@@ -49,20 +49,20 @@ const kv = new KVStore({
 
 await kv.init();
 
-await kv.set("name", "peer-ring", { ttl: 1000 })
-const name = await kv.get<string>("name")
-console.log(name)
-await kv.delete("name")
-
+await kv.set("name", "peer-ring", { ttl: 1000 });
+const name = await kv.get<string>("name");
+console.log(name);
+await kv.delete("name");
 ```
 
 generated types for peerRingOpts can be found [here](https://github.com/mahendraHegde/peer-ring/blob/main/packages/core/docs/interfaces/PeerRingOpts.md)
 
 Notes:
 
-1. Currently Kv-store only works on top of k8s, other peer-discovery mechanisms are [WIP](https://github.com/mahendraHegde/peer-ring?tab=readme-ov-file#project-roadmap).
-2. make sure that the application running on k8s has `"get", "watch", "list"` permission to listen to pod changes.
-3. data resides inside the pod(sharded across the replicas), so pod's memory is the limit of amount of data you can store.
-4. if possible run kv-store as a sidecar container for better separation from application(no out of the box solution yet, however its as simple as running another container with a REST server, check [**e2e**](https://github.com/mahendraHegde/peer-ring/packages/__e2e__/src/index.ts]) for inspiration)
+1. _[@peer-ring/core](https://github.com/mahendraHegde/peer-ring/tree/main/packages/core) is still under development_, you can use it as long as you are not bothered about durability of cached data. [read here](https://github.com/mahendraHegde/peer-ring?tab=readme-ov-file#replication) to understand how to choose the best quorum for your application.
+2. Currently Kv-store only works on top of k8s, other peer-discovery mechanisms are [WIP](https://github.com/mahendraHegde/peer-ring?tab=readme-ov-file#project-roadmap).
+3. make sure that the application running on k8s has `"get", "watch", "list"` permission to listen to pod changes.
+4. data resides inside the pod(sharded across the replicas), so pod's memory is the limit of amount of data you can store.
+5. if possible run kv-store as a sidecar container for better separation from application(no out of the box solution yet, however its as simple as running another container with a REST server, check [**e2e**](https://github.com/mahendraHegde/peer-ring/packages/__e2e__/src/index.ts]) for inspiration)
 
 > Make sure to check the features/limitations [here](https://github.com/mahendraHegde/peer-ring)

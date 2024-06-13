@@ -29,9 +29,9 @@
 
 #### Defined in
 
-types.ts:8
+[types.ts:8](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/discovery/src/types.ts#L8)
 
----
+___
 
 ### initDiscovery
 
@@ -47,9 +47,9 @@ types.ts:8
 
 #### Defined in
 
-types.ts:13
+[types.ts:13](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/discovery/src/types.ts#L13)
 
----
+___
 
 ### onPeerAdded
 
@@ -61,8 +61,8 @@ types.ts:13
 
 ##### Parameters
 
-| Name       | Type                                                               |
-| :--------- | :----------------------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `callback` | [`DiscoveryCallbackFnType`](../modules.md#discoverycallbackfntype) |
 
 ##### Returns
@@ -71,9 +71,9 @@ types.ts:13
 
 #### Defined in
 
-types.ts:9
+[types.ts:9](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/discovery/src/types.ts#L9)
 
----
+___
 
 ### onPeerRemoved
 
@@ -85,8 +85,8 @@ types.ts:9
 
 ##### Parameters
 
-| Name       | Type                                                               |
-| :--------- | :----------------------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `callback` | [`DiscoveryCallbackFnType`](../modules.md#discoverycallbackfntype) |
 
 ##### Returns
@@ -95,9 +95,9 @@ types.ts:9
 
 #### Defined in
 
-types.ts:10
+[types.ts:10](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/discovery/src/types.ts#L10)
 
----
+___
 
 ### stop
 
@@ -113,9 +113,9 @@ types.ts:10
 
 #### Defined in
 
-types.ts:12
+[types.ts:12](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/discovery/src/types.ts#L12)
 
----
+___
 
 ### whoAmI
 
@@ -131,4 +131,4 @@ types.ts:12
 
 #### Defined in
 
-types.ts:11
+[types.ts:11](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/discovery/src/types.ts#L11)

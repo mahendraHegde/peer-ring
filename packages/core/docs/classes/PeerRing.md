@@ -33,8 +33,8 @@
 
 #### Parameters
 
-| Name   | Type                                            |
-| :----- | :---------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `opts` | [`PeerRingOpts`](../interfaces/PeerRingOpts.md) |
 
 #### Returns
@@ -43,19 +43,19 @@
 
 #### Defined in
 
-core/src/peer-ring.ts:32
+[core/src/peer-ring.ts:32](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/peer-ring.ts#L32)
 
 ## Properties
 
 ### \_opts
 
-• **\_opts**: `Required`\<`Omit`\<[`PeerRingOpts`](../interfaces/PeerRingOpts.md), `"logger"` \| `"netManagerOpts"` \| `"netManager"`\>\>
+• **\_opts**: `Required`\<`Omit`\<[`PeerRingOpts`](../interfaces/PeerRingOpts.md), ``"logger"`` \| ``"netManagerOpts"`` \| ``"netManager"``\>\>
 
 #### Defined in
 
-core/src/peer-ring.ts:22
+[core/src/peer-ring.ts:22](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/peer-ring.ts#L22)
 
----
+___
 
 ### commands
 
@@ -63,9 +63,9 @@ core/src/peer-ring.ts:22
 
 #### Defined in
 
-core/src/peer-ring.ts:21
+[core/src/peer-ring.ts:21](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/peer-ring.ts#L21)
 
----
+___
 
 ### nodes
 
@@ -73,9 +73,9 @@ core/src/peer-ring.ts:21
 
 #### Defined in
 
-core/src/peer-ring.ts:20
+[core/src/peer-ring.ts:20](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/peer-ring.ts#L20)
 
----
+___
 
 ### opts
 
@@ -83,7 +83,7 @@ core/src/peer-ring.ts:20
 
 #### Defined in
 
-core/src/peer-ring.ts:32
+[core/src/peer-ring.ts:32](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/peer-ring.ts#L32)
 
 ## Methods
 
@@ -93,14 +93,14 @@ core/src/peer-ring.ts:32
 
 #### Type parameters
 
-| Name | Type                                    |
-| :--- | :-------------------------------------- |
-| `T`  | extends `Record`\<`string`, `unknown`\> |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `Record`\<`string`, `unknown`\> |
 
 #### Parameters
 
-| Name      | Type                                                                     |
-| :-------- | :----------------------------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `command` | [`Command`](../interfaces/Command.md)\<`Record`\<`string`, `unknown`\>\> |
 
 #### Returns
@@ -109,9 +109,9 @@ core/src/peer-ring.ts:32
 
 #### Defined in
 
-core/src/peer-ring.ts:240
+[core/src/peer-ring.ts:240](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/peer-ring.ts#L240)
 
----
+___
 
 ### initRing
 
@@ -123,9 +123,9 @@ core/src/peer-ring.ts:240
 
 #### Defined in
 
-core/src/peer-ring.ts:206
+[core/src/peer-ring.ts:206](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/peer-ring.ts#L206)
 
----
+___
 
 ### isAReplica
 
@@ -133,8 +133,8 @@ core/src/peer-ring.ts:206
 
 #### Parameters
 
-| Name          | Type                |
-| :------------ | :------------------ |
+| Name | Type |
+| :------ | :------ |
 | `targetNodes` | [`Node`](Node.md)[] |
 
 #### Returns
@@ -143,9 +143,9 @@ core/src/peer-ring.ts:206
 
 #### Defined in
 
-core/src/peer-ring.ts:236
+[core/src/peer-ring.ts:236](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/peer-ring.ts#L236)
 
----
+___
 
 ### onPeerAdded
 
@@ -153,8 +153,8 @@ core/src/peer-ring.ts:236
 
 #### Parameters
 
-| Name   | Type   |
-| :----- | :----- |
+| Name | Type |
+| :------ | :------ |
 | `peer` | `Peer` |
 
 #### Returns
@@ -163,9 +163,9 @@ core/src/peer-ring.ts:236
 
 #### Defined in
 
-core/src/peer-ring.ts:198
+[core/src/peer-ring.ts:198](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/peer-ring.ts#L198)
 
----
+___
 
 ### onPeerRemoved
 
@@ -173,8 +173,8 @@ core/src/peer-ring.ts:198
 
 #### Parameters
 
-| Name   | Type   |
-| :----- | :----- |
+| Name | Type |
+| :------ | :------ |
 | `peer` | `Peer` |
 
 #### Returns
@@ -183,9 +183,9 @@ core/src/peer-ring.ts:198
 
 #### Defined in
 
-core/src/peer-ring.ts:202
+[core/src/peer-ring.ts:202](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/peer-ring.ts#L202)
 
----
+___
 
 ### registerCommand
 
@@ -193,14 +193,14 @@ core/src/peer-ring.ts:202
 
 #### Type parameters
 
-| Name | Type                                                                      |
-| :--- | :------------------------------------------------------------------------ |
-| `T`  | extends `Record`\<`string`, `unknown`\> = `Record`\<`string`, `unknown`\> |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `Record`\<`string`, `unknown`\> = `Record`\<`string`, `unknown`\> |
 
 #### Parameters
 
-| Name  | Type                                               |
-| :---- | :------------------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `def` | [`CommandDef`](../interfaces/CommandDef.md)\<`T`\> |
 
 #### Returns
@@ -209,9 +209,9 @@ core/src/peer-ring.ts:202
 
 #### Defined in
 
-core/src/peer-ring.ts:230
+[core/src/peer-ring.ts:230](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/peer-ring.ts#L230)
 
----
+___
 
 ### stop
 
@@ -223,4 +223,4 @@ core/src/peer-ring.ts:230
 
 #### Defined in
 
-core/src/peer-ring.ts:342
+[core/src/peer-ring.ts:342](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/peer-ring.ts#L342)

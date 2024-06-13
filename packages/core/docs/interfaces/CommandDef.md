@@ -4,9 +4,9 @@
 
 ## Type parameters
 
-| Name | Type                                                                      |
-| :--- | :------------------------------------------------------------------------ |
-| `T`  | extends `Record`\<`string`, `unknown`\> = `Record`\<`string`, `unknown`\> |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `Record`\<`string`, `unknown`\> = `Record`\<`string`, `unknown`\> |
 
 ## Hierarchy
 
@@ -34,9 +34,9 @@
 
 #### Defined in
 
-core/src/types.ts:107
+[core/src/types.ts:107](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L107)
 
----
+___
 
 ### handler
 
@@ -44,9 +44,9 @@ core/src/types.ts:107
 
 #### Defined in
 
-core/src/types.ts:112
+[core/src/types.ts:112](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L112)
 
----
+___
 
 ### namespace
 
@@ -58,4 +58,4 @@ core/src/types.ts:112
 
 #### Defined in
 
-core/src/types.ts:106
+[core/src/types.ts:106](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L106)

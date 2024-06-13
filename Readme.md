@@ -27,6 +27,16 @@ Peer-ring is divided into three major modules:
 
 ---
 
+#### Replication
+
+Peer-ring provides replication and sloppy quorum for high availability. You can tweak the behavior using [`replicationFactor`](https://github.com/mahendraHegde/peer-ring/blob/main/packages/core/docs/interfaces/ExecuteOpts.md#replicationfactor) and [`quorumCount`](https://github.com/mahendraHegde/peer-ring/blob/main/packages/core/docs/interfaces/ExecuteOpts.md#quorumcount). You can choose among these characteristics:
+
+1. **Consistency (default)**: Choose `replicationFactor=1` and `quorumCount=1` for better consistency and low latency, but you will sacrifice availability and durability (i.e., your data is lost if the owner replica dies).
+2. **Availability**: Choose `replicationFactor>=3` and `quorumCount=1` for high availability. You can tweak `quorumCount` according to your consistency needs, higher `replicationFactor` and `quorumCount` means more latency.
+3. **Durability**: The current implementation does not offer strong durability. If all replicas holding a particular `key` die, you will lose the `key`. A better durability solution (maintaining the replication factor when a node goes down, redistributing when a new node comes up) is [WIP](https://github.com/mahendraHegde/peer-ring?tab=readme-ov-file#project-roadmap).
+
+---
+
 #### Project Roadmap
 
 This roadmap outlines the planned development and milestones for the project. Contributions and suggestions are welcome.
