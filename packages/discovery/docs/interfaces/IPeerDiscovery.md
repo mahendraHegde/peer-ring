@@ -31,7 +31,7 @@
 
 [types.ts:8](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/discovery/src/types.ts#L8)
 
-___
+---
 
 ### initDiscovery
 
@@ -49,7 +49,7 @@ ___
 
 [types.ts:13](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/discovery/src/types.ts#L13)
 
-___
+---
 
 ### onPeerAdded
 
@@ -61,8 +61,8 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name       | Type                                                               |
+| :--------- | :----------------------------------------------------------------- |
 | `callback` | [`DiscoveryCallbackFnType`](../modules.md#discoverycallbackfntype) |
 
 ##### Returns
@@ -73,7 +73,7 @@ ___
 
 [types.ts:9](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/discovery/src/types.ts#L9)
 
-___
+---
 
 ### onPeerRemoved
 
@@ -85,8 +85,8 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name       | Type                                                               |
+| :--------- | :----------------------------------------------------------------- |
 | `callback` | [`DiscoveryCallbackFnType`](../modules.md#discoverycallbackfntype) |
 
 ##### Returns
@@ -97,7 +97,7 @@ ___
 
 [types.ts:10](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/discovery/src/types.ts#L10)
 
-___
+---
 
 ### stop
 
@@ -115,7 +115,7 @@ ___
 
 [types.ts:12](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/discovery/src/types.ts#L12)
 
-___
+---
 
 ### whoAmI
 

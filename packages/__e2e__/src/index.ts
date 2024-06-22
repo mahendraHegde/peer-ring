@@ -8,6 +8,7 @@ const fastify = Fastify({
 });
 const watchQueryParams = { labelSelector: `app=kv-app` };
 const kv = new KVStore({
+  enableDataSync: true,
   peerRingOpts: {
     peerDiscovery: {
       watchQueryParams,

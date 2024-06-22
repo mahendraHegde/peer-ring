@@ -59,7 +59,7 @@ generated types for peerRingOpts can be found [here](https://github.com/mahendra
 
 Notes:
 
-1. _[@peer-ring/core](https://github.com/mahendraHegde/peer-ring/tree/main/packages/core) is still under development_, you can use it as long as you are not bothered about durability of cached data. [read here](https://github.com/mahendraHegde/peer-ring?tab=readme-ov-file#replication) to understand how to choose the best quorum for your application.
+1. [@peer-ring/core](https://github.com/mahendraHegde/peer-ring/tree/main/packages/core) is still under development\_, you can use it as long as you are not bothered about durability of cached data. [read here](https://github.com/mahendraHegde/peer-ring?tab=readme-ov-file#replication) to understand how to choose the best quorum for your application.
 2. Currently Kv-store only works on top of k8s, other peer-discovery mechanisms are [WIP](https://github.com/mahendraHegde/peer-ring?tab=readme-ov-file#project-roadmap).
 3. make sure that the application running on k8s has `"get", "watch", "list"` permission to listen to pod changes.
 4. data resides inside the pod(sharded across the replicas), so pod's memory is the limit of amount of data you can store.

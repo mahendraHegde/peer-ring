@@ -5,8 +5,11 @@ import { type pino, type LoggerOptions } from "pino";
 export enum PredefinedCommandsEnum {
   EmptyReply = "PeerRing_EmptyReply",
   Reply = "PeerRing_Reply",
-  StealData = "PeerRing_StealData", // to steal data. when new peer comes up, it will send this message to all peers having its chunk
-  MoveData = "PeerRing_MoveData", // to move data. when a peer dies, hashring will tell the right peer(replica) that it needs to send the chunk to new peer
+  MGet = "PeerRing_Mget",
+  MSet = "PeerRing_Mset",
+  MDel = "PeerRing_Mdel",
+  MoveData = "PeerRing_MoveData", // to move data. when a peer comes up, hashring will tell the right peer(replica) that it needs to move the token to new peer
+  CopyData = "PeerRing_CopyData", // to move data. when a peer dies, hashring will tell the right peer(replica) that it needs to send the token to new peer
 }
 
 export interface InetManager {
@@ -19,12 +22,21 @@ export interface InetManager {
     ) => Command | undefined | Promise<Command | undefined>,
   ) => void;
 
+  onMessageStream: (
+    executeStreamCallback: (command: Command) => AsyncGenerator<Command>,
+  ) => void;
+
+  getDataStream<T extends Record<string, unknown> = Record<string, unknown>>(
+    ip: string,
+    command: Command,
+  ): AsyncGenerator<Command<T>>;
+
   /**
    * called by the ring manager to communicate commands to peers
    * @param ip ip of the destination peer
    * @param command command to send
    */
-  sendMessage: <T extends Record<string, unknown> = Record<string, unknown>>(
+  makeRequest: <T extends Record<string, unknown> = Record<string, unknown>>(
     ip: string,
     command: Command,
   ) => Promise<Command<T>>;
@@ -44,6 +56,7 @@ export type LoggerOptType = LoggerOptions | pino.Logger;
 export class Node extends Peer {
   isVirtual: boolean;
   pos: number;
+  addedAt: number;
 }
 
 export interface NetManagerOpts {
@@ -89,6 +102,21 @@ export interface PeerRingOpts {
    * @defaultValue 1000
    */
   tokens?: number;
+
+  /**
+   * how long(in miliseconds) should the ring wait to start stealing tokens from peers
+   * @defaultValue 2000
+   */
+
+  initiateDataStealDelay?: number;
+
+  /**
+   * how long(in seconds) should the ring consider peer to be ready with data for stealing
+   * @defaultValue 5
+   */
+
+  newPeerCoolDownDelay?: number;
+
   /**
    * pino instance or ioptions
    */
@@ -98,8 +126,7 @@ export interface PeerRingOpts {
 export type CommandHandler<
   T extends Record<string, unknown> = Record<string, unknown>,
 > = (
-  key: Command["key"],
-  payload: Command["payload"],
+  command: Command<T>,
 ) => Promise<undefined | Command<T>> | Command<T> | undefined;
 
 export interface CommandBase {

@@ -1,7 +1,7 @@
 {
   "name": "@peer-ring/core",
   "version": "1.0.0",
-  "description": "distributed,decentralized framework to build highly scalable storage systems",
+  "description": "Distributed, Decentralized Sharding Framework for building Peer-to-Peer Systems",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -27,7 +27,24 @@
     "google-protobuf": "^3.21.2",
     "nanoid": "3.3.4"
   },
-  "keywords": [],
+  "keywords": [
+    "consistent-hashing",
+    "p2p",
+    "dynamo",
+    "distributed",
+    "decentralized",
+    "sharding",
+    "peer to peer",
+    "distributed-systems",
+    "high availability",
+    "consistent hashing",
+    "distributed applications",
+    "peer discovery",
+    "load balancing",
+    "replication",
+    "distributed quorum",
+    "dynamic allocation"
+  ],
   "author": "Mahendra Hegde",
   "license": "MIT",
   "publishConfig": {
