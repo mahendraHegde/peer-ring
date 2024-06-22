@@ -14,6 +14,8 @@ Fueled by `@peer-ring/core`, `@peer-ring/kv-store` uses `consistent hashing` to 
 
 `@peer-ring/kv-store` currently only supports only k8s based peer discovery, which means you can only use it if you are running your apps on kubernetes.
 
+![No Image](docs/kv-store.png)
+
 ### Where It Fits
 
 - **Between Embedded Caching and Hosted Solutions:** It bridges the gap, providing the ease of in-memory caching with distributed system reliability.
