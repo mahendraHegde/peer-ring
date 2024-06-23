@@ -27,7 +27,7 @@
 
 [core/src/types.ts:107](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L107)
 
-___
+---
 
 ### namespace
 

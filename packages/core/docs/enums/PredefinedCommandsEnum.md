@@ -15,37 +15,37 @@
 
 ### EmptyReply
 
-• **EmptyReply** = ``"PeerRing_EmptyReply"``
+• **EmptyReply** = `"PeerRing_EmptyReply"`
 
 #### Defined in
 
 [core/src/types.ts:6](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L6)
 
-___
+---
 
 ### MoveData
 
-• **MoveData** = ``"PeerRing_MoveData"``
+• **MoveData** = `"PeerRing_MoveData"`
 
 #### Defined in
 
 [core/src/types.ts:9](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L9)
 
-___
+---
 
 ### Reply
 
-• **Reply** = ``"PeerRing_Reply"``
+• **Reply** = `"PeerRing_Reply"`
 
 #### Defined in
 
 [core/src/types.ts:7](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L7)
 
-___
+---
 
 ### StealData
 
-• **StealData** = ``"PeerRing_StealData"``
+• **StealData** = `"PeerRing_StealData"`
 
 #### Defined in
 

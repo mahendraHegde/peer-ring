@@ -10,4 +10,5 @@ export enum PodPhaseEnum {
   Running = "Running",
   Failed = "Failed",
   Succeeded = "Succeeded",
+  Terminating = "Terminating",
 }

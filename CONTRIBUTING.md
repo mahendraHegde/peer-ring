@@ -1,2 +1,2 @@
 sorry still WIP!!
-if you are super keen reach out to me though comments on issues.
+if you are super keen reach out to me through comments on issues.

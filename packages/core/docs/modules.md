@@ -40,9 +40,9 @@
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `Record`\<`string`, `unknown`\> = `Record`\<`string`, `unknown`\> |
+| Name | Type                                                                      |
+| :--- | :------------------------------------------------------------------------ |
+| `T`  | extends `Record`\<`string`, `unknown`\> = `Record`\<`string`, `unknown`\> |
 
 #### Type declaration
 
@@ -50,9 +50,9 @@
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `key` | [`Command`](interfaces/Command.md)[``"key"``] |
+| Name      | Type                                              |
+| :-------- | :------------------------------------------------ |
+| `key`     | [`Command`](interfaces/Command.md)[``"key"``]     |
 | `payload` | [`Command`](interfaces/Command.md)[``"payload"``] |
 
 ##### Returns
@@ -63,7 +63,7 @@
 
 [core/src/types.ts:98](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L98)
 
-___
+---
 
 ### LoggerOptType
 
@@ -81,10 +81,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name                    | Type                                        |
+| :---------------------- | :------------------------------------------ |
 | `loggerInstanceOrOpts?` | [`LoggerOptType`](modules.md#loggeropttype) |
-| `bindings?` | `Bindings` |
+| `bindings?`             | `Bindings`                                  |
 
 #### Returns
 

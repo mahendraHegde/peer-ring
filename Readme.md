@@ -4,7 +4,7 @@
 
 Peer-ring is designed to be storage or use case agnostic. It acts as a base framework for building distributed solutions. Some sample applications that can be built on top of peer-ring include:
 
-- [x] [Distributed KV store](https://www.npmjs.com/package/@peer-ring/kv-store): In-memory key-value store.
+- [x] [Distributed KV store](https://www.npmjs.com/package/@peer-ring/kv-store): Distributed In-memory key-value store that can be embedded into your application.
 - [ ] Distributed Rate Limiter: Rate limiter that can be deployed close to your application for greater performance.
 - [ ] Distributed Pub-Sub: In-memory pub-sub/queue system for application synchronization.
       ... and many more.
@@ -29,7 +29,7 @@ Peer-ring is divided into three major modules:
 
 #### Replication
 
-Peer-ring provides replication and sloppy quorum for high availability. You can tweak the behavior using [`replicationFactor`](https://github.com/mahendraHegde/peer-ring/blob/main/packages/core/docs/interfaces/ExecuteOpts.md#replicationfactor) and [`quorumCount`](https://github.com/mahendraHegde/peer-ring/blob/main/packages/core/docs/interfaces/ExecuteOpts.md#quorumcount). You can choose among these characteristics:
+Peer-ring provides `replication` and `sloppy quorum` for high availability. You can tweak the behavior using [`replicationFactor`](https://github.com/mahendraHegde/peer-ring/blob/main/packages/core/docs/interfaces/ExecuteOpts.md#replicationfactor) and [`quorumCount`](https://github.com/mahendraHegde/peer-ring/blob/main/packages/core/docs/interfaces/ExecuteOpts.md#quorumcount). You can choose among these characteristics:
 
 1. **Consistency (default)**: Choose `replicationFactor=1` and `quorumCount=1` for better consistency and low latency, but you will sacrifice availability and durability (i.e., your data is lost if the owner replica dies).
 2. **Availability**: Choose `replicationFactor>=3` and `quorumCount=1` for high availability. You can tweak `quorumCount` according to your consistency needs, higher `replicationFactor` and `quorumCount` means more latency.
@@ -46,29 +46,34 @@ This roadmap outlines the planned development and milestones for the project. Co
 **Status:** In Progress
 
 - [x] Design system architecture
-- [x] Implement core sharding functionality
 - [x] Develop basic peer discovery module with k8s
+- [x] Implement core sharding functionality
+- [x] Implement replication and quorum
 - [x] Implement in-memory KV store
-- [ ] Handle failures by token transfer when a peer goes down or comes back up
+- [ ] Handle failures by token transfer when a peer goes down or comes back up [*in Alpha*]
+  - [x] steal data/tokens from peer when new node is added
+  - [x] when data owner node goes down, the previous node will own the tokens of the node went down, it should copy data/tokens from replicas.
+  - [ ] when replica goes down, the previous node will own the tokens of the node went down, it should copy the data/tokens from other replicas/owner
 - [ ] Write comprehensive documentation
+- [ ] Create a contribution guide and code of conduct
 - [ ] Set up continuous integration (CI) pipeline
 
 ##### Milestone 2: Stability and Scalability
 
 **Status:** Planned
 
+- [ ] deployment as sidecar
 - [ ] Conduct thorough testing and validation
-- [ ] Improve fault tolerance mechanisms
-- [ ] Implement dynamic scaling features
 
 ##### Milestone 3: Enhanced Features
 
 **Status:** Planned
 
+- [ ] Develop distributed rate limiter
+- [ ] Support custom reconciliation/read repair by the client
 - [ ] Implement advanced peer discovery strategies
   - [ ] Registry based (etcd/ZooKeeper)
   - [ ] SWIM or gossip based
-- [ ] Develop distributed rate limiter
 - [ ] Create distributed pub-sub system
 - [ ] Optimize performance and resource usage
 
@@ -76,9 +81,10 @@ This roadmap outlines the planned development and milestones for the project. Co
 
 **Status:** Planned
 
-- [ ] Develop a user-friendly website and documentation portal
-- [ ] Create a contribution guide and code of conduct
+- [ ] Develop monitoring/metrics layer
+- [ ] Create a guide for building custom applications on top of peer-ring
 - [ ] Provide detailed usage examples and tutorials
+- [ ] improve data sync with Anti-entropy
 
 ---
 

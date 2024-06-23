@@ -2,7 +2,6 @@ import {
   type PeerRingOpts,
   type LoggerOptType,
   type Command,
-  type ExecuteOpts,
 } from "@peer-ring/core";
 import { type K8sPeerDiscoveryOpts } from "@peer-ring/discovery-k8s";
 
@@ -24,6 +23,17 @@ export interface KVOpts {
     peerDiscovery: PeerDiscoveryOpts;
   };
   logger?: LoggerOptType;
+  /**
+   * specifies whether to
+   *  copy data to maintain the {@link PeerRingOpts.replicationFactor} when a node goes down or
+   *  copy data(tokens) from peer when a node comes up
+   *
+   * be careful before setting this, it requires copying tokens from client which could be huge depending on your data size,
+   * if you cluster goes through frequent scaling, this will add additional overhead of frequent data clone.
+   * you should set this, if you prefer durability of your data over performance
+   * @defaultValue false
+   */
+  enableDataSync?: boolean;
 }
 
 export enum KVEvents {
@@ -34,6 +44,9 @@ export enum Commands {
   set = "set",
   get = "get",
   delete = "delete",
+  mget = "mget",
+  mset = "mset",
+  mdel = "mdel",
 }
 
 export const namespace = "PeerRing_KvStore";

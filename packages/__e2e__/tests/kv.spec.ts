@@ -63,7 +63,7 @@ describe("API Tests", () => {
       expect(response.status).toBe(200);
       expect(response.text).toEqual("");
     });
-    test(`Cache Set, GET, delete should work with preplication factor and quorum beyong available nodes for key ${key}`, async () => {
+    test(`Cache Set, GET, delete should work with preplication factor and quorum beyond available nodes for key ${key}`, async () => {
       const keyRepl = `repl_${key}`;
       const path = `/kv/${keyRepl}?replicationFactor=30&quorumCount=30`;
       let response = await request(API_URL)
@@ -79,6 +79,79 @@ describe("API Tests", () => {
       response = await request(API_URL).get(path);
       expect(response.status).toBe(200);
       expect(response.text).toBe(keyRepl);
+
+      response = await request(API_URL).del(path);
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual({});
+
+      response = await request(API_URL).get(path);
+      expect(response.status).toBe(200);
+      expect(response.text).toEqual("");
+    });
+  });
+  [{ a: "1" }, [1, 2], null].map((value) => {
+    const [key] = generateRandomNumbers(1);
+    test(`Cache Set, GET, delete should work with key:${key}, value:${value} `, async () => {
+      const path = `/kv/${key}`;
+      let response = await request(API_URL).post("/kv").send({
+        key,
+        value,
+      });
+
+      expect(response.status).toBe(201);
+      expect(response.body).toEqual({});
+
+      response = await request(API_URL).get(path);
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual(value);
+
+      response = await request(API_URL).del(path);
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual({});
+
+      response = await request(API_URL).get(path);
+      expect(response.status).toBe(200);
+      expect(response.text).toEqual("");
+    });
+    test(`Cache Set, GET, delete should work with factor and quorum for key:${key}, value:${value} `, async () => {
+      const path = `/kv/${key}?replicationFactor=3&quorumCount=2`;
+      let response = await request(API_URL)
+        .post("/kv?replicationFactor=3&quorumCount=2")
+        .send({
+          key,
+          value,
+        });
+
+      expect(response.status).toBe(201);
+      expect(response.body).toEqual({});
+
+      response = await request(API_URL).get(path);
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual(value);
+
+      response = await request(API_URL).del(path);
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual({});
+
+      response = await request(API_URL).get(path);
+      expect(response.status).toBe(200);
+      expect(response.text).toEqual("");
+    });
+    test(`Cache Set, GET, delete should work with factor and quorum beyond limit for  key:${key}, value:${value} `, async () => {
+      const path = `/kv/${key}?replicationFactor=30&quorumCount=30`;
+      let response = await request(API_URL)
+        .post("/kv?replicationFactor=30&quorumCount=30")
+        .send({
+          key,
+          value,
+        });
+
+      expect(response.status).toBe(201);
+      expect(response.body).toEqual({});
+
+      response = await request(API_URL).get(path);
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual(value);
 
       response = await request(API_URL).del(path);
       expect(response.status).toBe(200);

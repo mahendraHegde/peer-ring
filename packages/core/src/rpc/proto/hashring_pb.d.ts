@@ -19,10 +19,6 @@ export class StreamCommand extends jspb.Message {
   clearPayload(): void;
   getPayload(): string | undefined;
   setPayload(value: string): StreamCommand;
-  getIp(): string;
-  setIp(value: string): StreamCommand;
-  getId(): string;
-  setId(value: string): StreamCommand;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): StreamCommand.AsObject;
@@ -51,7 +47,92 @@ export namespace StreamCommand {
     command: string;
     key: string;
     payload?: string;
-    ip: string;
-    id: string;
   };
+}
+
+export class ErrorResponse extends jspb.Message {
+  getMessage(): string;
+  setMessage(value: string): ErrorResponse;
+  getCode(): string;
+  setCode(value: string): ErrorResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ErrorResponse.AsObject;
+  static toObject(
+    includeInstance: boolean,
+    msg: ErrorResponse,
+  ): ErrorResponse.AsObject;
+  static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+  static extensionsBinary: {
+    [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>;
+  };
+  static serializeBinaryToWriter(
+    message: ErrorResponse,
+    writer: jspb.BinaryWriter,
+  ): void;
+  static deserializeBinary(bytes: Uint8Array): ErrorResponse;
+  static deserializeBinaryFromReader(
+    message: ErrorResponse,
+    reader: jspb.BinaryReader,
+  ): ErrorResponse;
+}
+
+export namespace ErrorResponse {
+  export type AsObject = {
+    message: string;
+    code: string;
+  };
+}
+
+export class PeerPayload extends jspb.Message {
+  hasCommand(): boolean;
+  clearCommand(): void;
+  getCommand(): StreamCommand | undefined;
+  setCommand(value?: StreamCommand): PeerPayload;
+
+  hasError(): boolean;
+  clearError(): void;
+  getError(): ErrorResponse | undefined;
+  setError(value?: ErrorResponse): PeerPayload;
+  getId(): string;
+  setId(value: string): PeerPayload;
+  getIp(): string;
+  setIp(value: string): PeerPayload;
+
+  getResponseCase(): PeerPayload.ResponseCase;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PeerPayload.AsObject;
+  static toObject(
+    includeInstance: boolean,
+    msg: PeerPayload,
+  ): PeerPayload.AsObject;
+  static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+  static extensionsBinary: {
+    [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>;
+  };
+  static serializeBinaryToWriter(
+    message: PeerPayload,
+    writer: jspb.BinaryWriter,
+  ): void;
+  static deserializeBinary(bytes: Uint8Array): PeerPayload;
+  static deserializeBinaryFromReader(
+    message: PeerPayload,
+    reader: jspb.BinaryReader,
+  ): PeerPayload;
+}
+
+export namespace PeerPayload {
+  export type AsObject = {
+    command?: StreamCommand.AsObject;
+    error?: ErrorResponse.AsObject;
+    id: string;
+    ip: string;
+  };
+
+  export enum ResponseCase {
+    RESPONSE_NOT_SET = 0,
+    COMMAND = 1,
+    ERROR = 2,
+  }
 }

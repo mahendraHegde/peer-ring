@@ -75,9 +75,11 @@ export class K8sPeerDiscovery implements IPeerDiscovery {
                 resolve();
               }
             } else if (
-              [PodPhaseEnum.Failed, PodPhaseEnum.Succeeded].includes(
-                phase as PodPhaseEnum,
-              )
+              [
+                PodPhaseEnum.Failed,
+                PodPhaseEnum.Succeeded,
+                PodPhaseEnum.Terminating,
+              ].includes(phase as PodPhaseEnum)
             ) {
               this.peerMap.delete(obj.status?.podIP as string);
               void Promise.all(

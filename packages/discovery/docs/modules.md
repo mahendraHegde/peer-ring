@@ -28,8 +28,8 @@
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name   | Type                      |
+| :----- | :------------------------ |
 | `peer` | [`Peer`](classes/Peer.md) |
 
 ##### Returns

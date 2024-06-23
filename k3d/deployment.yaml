@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: kv-app
 spec:
-  replicas: 5
+  replicas: 3
   selector:
     matchLabels:
       app: kv-app

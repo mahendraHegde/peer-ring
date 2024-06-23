@@ -22,7 +22,7 @@ pino instance or options
 
 [core/src/types.ts:63](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L63)
 
-___
+---
 
 ### port
 
@@ -33,14 +33,14 @@ RPC port for inter peer communication
 **`Default Value`**
 
 ```ts
-4444
+4444;
 ```
 
 #### Defined in
 
 [core/src/types.ts:54](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L54)
 
-___
+---
 
 ### requestTimeout
 
@@ -51,7 +51,7 @@ timeout value in milliseconds for rpc req/response
 **`Default Value`**
 
 ```ts
-2000
+2000;
 ```
 
 #### Defined in

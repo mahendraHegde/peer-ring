@@ -10,7 +10,8 @@ import "google/protobuf/any.proto";
 package hashring;
 
 service HashRing {
-  rpc executeCommand(stream StreamCommand) returns (stream StreamCommand) {}
+  rpc executeCommand(stream PeerPayload) returns (stream PeerPayload) {}
+  rpc executeServerStreamCommand(PeerPayload) returns (stream PeerPayload) {}
 }
 
 message StreamCommand {
@@ -18,6 +19,18 @@ message StreamCommand {
   string command = 2;
   string key = 3;
   optional string payload = 4;
-  string ip=5;
-  string id=6;
+}
+
+message ErrorResponse {
+  string message = 1;
+  string code = 2;
+}
+
+message PeerPayload {
+  oneof response {
+    StreamCommand command = 1;
+    ErrorResponse error = 2;
+  }
+  string id = 3;
+  string ip=4;
 }

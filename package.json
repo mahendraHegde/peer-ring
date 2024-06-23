@@ -1,7 +1,7 @@
 {
   "name": "peer-ring",
   "version": "1.0.0",
-  "description": "Distributed, Decentralized Sharding Framework for Peer-to-Peer Storage",
+  "description": "Distributed, Decentralized Sharding Framework for building Peer-to-Peer Systems",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
   "keywords": [
     "consistent-hashing",
     "p2p",
+    "dynamo",
     "distributed",
     "decentralized",
     "sharding",
@@ -39,6 +40,7 @@
     "peer discovery",
     "load balancing",
     "replication",
+    "distributed quorum",
     "dynamic allocation"
   ],
   "author": "Mahendra Hegde",

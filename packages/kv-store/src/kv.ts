@@ -5,6 +5,8 @@ import {
   buildLogger,
   type PeerRingOpts,
   ExecuteOpts,
+  PredefinedCommandsEnum,
+  type Command,
 } from "@peer-ring/core";
 import { type IPeerDiscovery } from "@peer-ring/discovery";
 import {
@@ -16,7 +18,7 @@ import {
 } from "./types";
 import { type Logger } from "pino";
 import { EventEmitter } from "node:events";
-import { MemCache } from "./memcache";
+import { Store } from "./store";
 
 export class KVStore {
   private readonly peerRing: PeerRing;
@@ -25,8 +27,8 @@ export class KVStore {
   private startupError: Error;
   private readonly logger: Logger;
   private readonly eventEmitter: EventEmitter;
-  private readonly memCache: MemCache;
-  constructor(opts: KVOpts = {}) {
+  private readonly store: Store;
+  constructor(private readonly opts: KVOpts = {}) {
     let discovery: PeerRingOpts["peerDiscovery"];
     this.logger = buildLogger(opts.logger).child({ class: KVStore.name });
     if (!opts.peerRingOpts?.peerDiscovery) {
@@ -49,7 +51,11 @@ export class KVStore {
       logger: this.logger,
     });
     this.eventEmitter = new EventEmitter();
-    this.memCache = new MemCache();
+    this.store = new Store(
+      this.peerRing,
+      opts.enableDataSync,
+      opts.enableDataSync,
+    );
     this._initCache().catch((err) => {
       this.logger.error({ err }, `Failed to init the KV store`);
       this.startupError = err;
@@ -58,26 +64,47 @@ export class KVStore {
 
   private async _initCache(): Promise<void> {
     this.isInitRunning = true;
-    await this.peerRing.initRing();
+    const syncCommands = [
+      {
+        namespace,
+        command: PredefinedCommandsEnum.MDel,
+        handler: this.store.mdel.bind(this.store),
+      },
+      {
+        namespace,
+        command: PredefinedCommandsEnum.MSet,
+        handler: this.store.mset.bind(this.store),
+      },
+      {
+        namespace,
+        command: PredefinedCommandsEnum.MGet,
+        handler: this.store.mget.bind(this.store),
+      },
+    ];
+
     [
       {
         namespace,
         command: Commands.set,
-        handler: this.memCache.set.bind(this.memCache) as CommandHandler,
+        handler: this.store.set.bind(this.store) as CommandHandler,
       },
       {
         namespace,
         command: Commands.get,
-        handler: this.memCache.get.bind(this.memCache) as CommandHandler,
+        handler: this.store.get.bind(this.store) as CommandHandler,
       },
       {
         namespace,
         command: Commands.delete,
-        handler: this.memCache.delete.bind(this.memCache),
+        handler: this.store.delete.bind(this.store),
       },
     ].forEach((cmd) => {
       this.peerRing.registerCommand(cmd);
     });
+    if (this.opts.enableDataSync) {
+      syncCommands.forEach((cmd) => this.peerRing.registerCommand(cmd));
+    }
+    await this.peerRing.initRing();
     this.isReady = true;
     this.isInitRunning = false;
     this.eventEmitter.emit(KVEvents.up);
@@ -95,6 +122,23 @@ export class KVStore {
         });
       });
     }
+  }
+
+  private reconciliate(command: Command<CacheItem>): CacheItem | undefined {
+    //choose latest update(LWW)
+    let val: CacheItem | undefined = command.payload;
+    if (command.context?.peerResponses?.results?.length) {
+      for (const res of command.context.peerResponses.results) {
+        if (res.payload?.updatedAt) {
+          if (val?.updatedAt) {
+            val = val.updatedAt > res.payload.updatedAt ? val : res.payload;
+          } else {
+            val = res.payload;
+          }
+        }
+      }
+    }
+    return val;
   }
 
   async init(): Promise<void> {
@@ -125,7 +169,6 @@ export class KVStore {
       ttl,
       updatedAt: new Date().getTime(),
     };
-    this.logger.debug({ key, item, ttl }, "sending SET to peer ring");
     await this.peerRing.execute({
       namespace,
       command: Commands.set,
@@ -137,19 +180,18 @@ export class KVStore {
 
   async get<T>(key: string, opts: ExecuteOpts = {}): Promise<T | undefined> {
     await this.waitForUp();
-    this.logger.debug({ key }, "sending GET to peer ring");
     const command = await this.peerRing.execute<CacheItem>({
       namespace,
       command: Commands.get,
       key,
       opts,
     });
+    this.logger.debug({ command }, `receieved from peer ring`);
     if (!command) {
       return undefined;
     }
-    return command.payload?.item
-      ? JSON.parse(command.payload?.item)
-      : undefined;
+    const reconciliated = this.reconciliate(command);
+    return reconciliated?.item ? JSON.parse(reconciliated.item) : undefined;
   }
 
   async delete(key: string, opts: ExecuteOpts = {}): Promise<undefined> {

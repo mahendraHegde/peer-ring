@@ -2,7 +2,7 @@ import { RpcNetManager } from "../src/rpc/index";
 import { type Command, type NetManagerOpts } from "../src/index";
 import { type ClientDuplexStream } from "@grpc/grpc-js";
 import { HashRingClient } from "../src/rpc/proto/hashring_grpc_pb";
-import { StreamCommand } from "../src/rpc/proto/hashring_pb";
+import { StreamCommand, PeerPayload } from "../src/rpc/proto/hashring_pb";
 
 jest.mock("nanoid", () => ({
   nanoid: jest.fn().mockReturnValue("mock-id"),
@@ -40,14 +40,17 @@ describe("RpcNetManager", () => {
       responseStreamCommand.setCommand("cmd");
       responseStreamCommand.setKey("key");
       responseStreamCommand.setNamespace("ns");
-      responseStreamCommand.setId("mock-id");
       responseStreamCommand.setPayload(JSON.stringify(command.payload));
-      let callback: (cmd: StreamCommand) => void = () => {};
+      const payload = new PeerPayload();
+      payload.setCommand(responseStreamCommand);
+      payload.setId("mock-id");
+      let callback: (cmd: PeerPayload) => void = () => {};
 
-      const mockStream: ClientDuplexStream<StreamCommand, StreamCommand> = {
-        write: jest.fn(),
+      const mockStream: ClientDuplexStream<PeerPayload, PeerPayload> = {
+        write: jest.fn().mockImplementation((_, cb) => cb()),
         destroyed: false,
         closed: false,
+        writableNeedDrain: false,
         on: jest
           .fn()
           .mockImplementation((event: string, cb: typeof callback) => {
@@ -55,14 +58,20 @@ describe("RpcNetManager", () => {
               callback = cb;
             }
           }),
-      } as unknown as ClientDuplexStream<StreamCommand, StreamCommand>;
+        once: jest.fn(),
+      } as unknown as ClientDuplexStream<PeerPayload, PeerPayload>;
       jest
         .spyOn(HashRingClient.prototype, "executeCommand")
         .mockReturnValue(mockStream);
 
       rpcNetManager.onMessage(executeCallback);
-      const promise = rpcNetManager.sendMessage(ip, command);
-      callback(responseStreamCommand);
+      const promise = rpcNetManager.makeRequest(ip, command);
+      await new Promise((resolve) =>
+        process.nextTick(() => {
+          callback(payload);
+          resolve(payload);
+        }),
+      );
       await expect(promise).resolves.toMatchObject(
         expect.objectContaining({
           command: "cmd",
@@ -76,7 +85,7 @@ describe("RpcNetManager", () => {
       expect(executeCallback).not.toHaveBeenCalled();
 
       // new request flow
-      callback(responseStreamCommand);
+      callback(payload);
       expect(executeCallback).toHaveBeenCalledWith({
         command: "cmd",
         key: "key",
@@ -87,13 +96,10 @@ describe("RpcNetManager", () => {
       });
 
       //reject timedouts
-      const promiseTimedOut = rpcNetManager.sendMessage(ip, command);
+      const promiseTimedOut = rpcNetManager.makeRequest(ip, command);
       await expect(promiseTimedOut).rejects.toEqual({
-        code: 10,
-        details: "Request did not finish within 800ms",
+        code: "10",
         message: "Request did not finish within 800ms",
-        metadata: expect.anything(),
-        name: "TimedOut",
       });
     });
   });

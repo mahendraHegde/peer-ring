@@ -33,7 +33,7 @@
 
 [types.ts:2](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/discovery/src/types.ts#L2)
 
-___
+---
 
 ### name
 

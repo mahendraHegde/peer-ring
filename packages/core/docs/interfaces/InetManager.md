@@ -24,8 +24,8 @@
 
 ##### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name       | Type                                                                                                                                                                                                                                           | Description                                      |
+| :--------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------- |
 | `callback` | (`command`: [`Command`](Command.md)\<`Record`\<`string`, `unknown`\>\>) => `undefined` \| [`Command`](Command.md)\<`Record`\<`string`, `unknown`\>\> \| `Promise`\<`undefined` \| [`Command`](Command.md)\<`Record`\<`string`, `unknown`\>\>\> | is called when the message is received by a peer |
 
 ##### Returns
@@ -36,7 +36,7 @@
 
 [core/src/types.ts:16](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L16)
 
-___
+---
 
 ### sendMessage
 
@@ -50,16 +50,16 @@ called by the ring manager to communicate commands to peers
 
 ##### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `Record`\<`string`, `unknown`\> = `Record`\<`string`, `unknown`\> |
+| Name | Type                                                                      |
+| :--- | :------------------------------------------------------------------------ |
+| `T`  | extends `Record`\<`string`, `unknown`\> = `Record`\<`string`, `unknown`\> |
 
 ##### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `ip` | `string` | ip of the destination peer |
-| `command` | [`Command`](Command.md)\<`Record`\<`string`, `unknown`\>\> | command to send |
+| Name      | Type                                                       | Description                |
+| :-------- | :--------------------------------------------------------- | :------------------------- |
+| `ip`      | `string`                                                   | ip of the destination peer |
+| `command` | [`Command`](Command.md)\<`Record`\<`string`, `unknown`\>\> | command to send            |
 
 ##### Returns
 
@@ -69,7 +69,7 @@ called by the ring manager to communicate commands to peers
 
 [core/src/types.ts:27](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L27)
 
-___
+---
 
 ### setIp
 
@@ -83,8 +83,8 @@ optional method called by the ring manager, when present to set the node's ip
 
 ##### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name | Type     | Description            |
+| :--- | :------- | :--------------------- |
 | `ip` | `string` | ip of the current node |
 
 ##### Returns
@@ -95,7 +95,7 @@ optional method called by the ring manager, when present to set the node's ip
 
 [core/src/types.ts:37](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L37)
 
-___
+---
 
 ### start
 
@@ -113,7 +113,7 @@ ___
 
 [core/src/types.ts:31](https://github.com/mahendraHegde/peer-ring/blob/a34a79cc00dcfece3dd7053087438426a58bff61/packages/core/src/types.ts#L31)
 
-___
+---
 
 ### stop
 
