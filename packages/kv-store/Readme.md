@@ -37,6 +37,7 @@ import { KVStore } from "@peer-ring/kv-store";
 const watchQueryParams = { labelSelector: `app=your-awesome-app` };
 const kv = new KVStore({
   peerRingOpts: {
+    replicationFactor: 3, //all keys will be copied to 3 replicas
     peerDiscovery: {
       watchQueryParams,
     },
@@ -51,8 +52,15 @@ const kv = new KVStore({
 
 await kv.init();
 
-await kv.set("name", "peer-ring", { ttl: 1000 });
-const name = await kv.get<string>("name");
+await kv.set("name", "peer-ring", {
+  ttl: 1000,
+  replicationFactor: 2,
+  quorumCount: 1,
+});
+const name = await kv.get<string>("name", {
+  replicationFactor: 2,
+  quorumCount: 1,
+});
 console.log(name);
 await kv.delete("name");
 ```
