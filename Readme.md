@@ -92,9 +92,11 @@ This roadmap outlines the planned development and milestones for the project. Co
 
 Contributions are more than welcome. Reading [Amazon Dynamo](https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf) before contributing can make your life easier but is not a strict requirement. Read more about contributing [here](https://github.com/mahendraHegde/peer-ring/CONTRIBUTING.md).
 
----- 
+---
+
 #### Release
+
 1. pnpm changeset
 2. commit changes
 3. pnpm prepare:publish
-4. pnpm publish -r
+4. pnpm publish -r --filter=\!__e2e__ --filter=\!peer-ring --dry-run

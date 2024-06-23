@@ -1,6 +1,6 @@
 {
   "name": "@peer-ring/core",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Distributed, Decentralized Sharding Framework for building Peer-to-Peer Systems",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
