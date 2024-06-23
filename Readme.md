@@ -11,6 +11,16 @@ Peer-ring is designed to be storage or use case agnostic. It acts as a base fram
 
 ---
 
+#### How It Works
+
+`@peer-ring` uses `consistent hashing` to distribute data efficiently. Writes are spread across replicas, ensuring resilience without compromising speed.
+
+`@peer-ring/kv-store` is one such application built on top of peer-ring, currently only supports only k8s based peer discovery, which means you can only use it if you are running your apps on kubernetes.
+
+![No Image](https://raw.githubusercontent.com/mahendraHegde/peer-ring/main/packages/kv-store/docs/kv-store.png)
+
+---
+
 #### Modules
 
 Peer-ring is divided into three major modules:
@@ -99,4 +109,4 @@ Contributions are more than welcome. Reading [Amazon Dynamo](https://www.allthin
 1. pnpm changeset
 2. commit changes
 3. pnpm prepare:publish
-4. pnpm publish -r --filter=\!__e2e__ --filter=\!peer-ring --dry-run
+4. pnpm publish -r --filter=\!**e2e** --filter=\!peer-ring --dry-run

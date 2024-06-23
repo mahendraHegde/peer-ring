@@ -65,6 +65,6 @@ Notes:
 2. Currently Kv-store only works on top of k8s, other peer-discovery mechanisms are [WIP](https://github.com/mahendraHegde/peer-ring?tab=readme-ov-file#project-roadmap).
 3. make sure that the application running on k8s has `"get", "watch", "list"` permission to listen to pod changes.
 4. data resides inside the pod(sharded across the replicas), so pod's memory is the limit of amount of data you can store.
-5. if possible run kv-store as a sidecar container for better separation from application(no out of the box solution yet, however its as simple as running another container with a REST server, check [**e2e**](https://github.com/mahendraHegde/peer-ring/packages/__e2e__/src/index.ts]) for inspiration)
+5. if possible run kv-store as a sidecar container for better separation from application(no out of the box solution yet, however its as simple as running another container with a REST server, check [**e2e**](https://github.com/mahendraHegde/peer-ring/blob/main/packages/__e2e__/src/index.ts) for inspiration)
 
 > Make sure to check the features/limitations [here](https://github.com/mahendraHegde/peer-ring)
